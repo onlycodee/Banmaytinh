@@ -57,6 +57,22 @@
                     </f:facet>
                 </p:menubar>
             </h:form>
+            <p:carousel value="#{productController.products}" headerText="Responsive" var="pr" itemStyle="text-align:center" responsive="true">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <!--<p:graphicImage name="demo/images/godfather/godfather1.jpg" />-->
+                    <h:outputText value="Ten:" />
+                    <h:outputText value="#{pr.name}" />
+
+                    <h:outputText value="Gia" />
+                    <h:outputText value="#{pr.price}" />
+
+                    <h:outputText value="Thong so:" />
+                    <h:outputText value="#{pr.detail}" style="color:#{car.color}"/>
+
+                    <h:outputText value="Trang thai" />
+                    <h:outputText value="$#{pr.status}" />
+                </p:panelGrid>
+            </p:carousel>
         </ui:composition>
     </h:body>
 </html>
