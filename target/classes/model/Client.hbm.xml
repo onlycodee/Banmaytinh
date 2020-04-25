@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2020 9:18:45 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Client" table="Client" schema="dbo" catalog="QuanLiBanMayTinh" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="Name" />
+        </property>
+        <property name="address" type="string">
+            <column name="Address" />
+        </property>
+        <property name="loginName" type="string">
+            <column name="LoginName" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="100" />
+        </property>
+        <property name="gender" type="java.lang.Boolean">
+            <column name="Gender" />
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="Age" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="PhoneNumber" length="30" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" />
+        </property>
+        <set name="invoices" table="Invoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ClientId" />
+            </key>
+            <one-to-many class="model.Invoice" />
+        </set>
+        <set name="ratings" table="Rating" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ClientId" />
+            </key>
+            <one-to-many class="model.Rating" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2020 9:18:45 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Product" table="Product" schema="dbo" catalog="QuanLiBanMayTinh" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="productCategory" class="model.ProductCategory" fetch="select">
+            <column name="ProductCategoryID" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="Name" not-null="true" />
+        </property>
+        <property name="price" type="int">
+            <column name="Price" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="Status" />
+        </property>
+        <property name="detail" type="string">
+            <column name="Detail" />
+        </property>
+        <property name="imagePath" type="string">
+            <column name="ImagePath" />
+        </property>
+        <property name="leftCount" type="int">
+            <column name="LeftCount" not-null="true" />
+        </property>
+        <property name="sellCount" type="java.lang.Integer">
+            <column name="SellCount" />
+        </property>
+        <property name="viewCount" type="java.lang.Integer">
+            <column name="ViewCount" />
+        </property>
+        <set name="productInvoices" table="ProductInvoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProductId" not-null="true" />
+            </key>
+            <one-to-many class="model.ProductInvoice" />
+        </set>
+        <set name="ratings" table="Rating" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProductIdId" />
+            </key>
+            <one-to-many class="model.Rating" />
+        </set>
+    </class>
+</hibernate-mapping>

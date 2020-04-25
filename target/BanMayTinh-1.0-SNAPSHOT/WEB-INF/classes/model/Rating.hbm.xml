@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2020 9:18:45 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Rating" table="Rating" schema="dbo" catalog="QuanLiBanMayTinh" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="client" class="model.Client" fetch="select">
+            <column name="ClientId" />
+        </many-to-one>
+        <many-to-one name="product" class="model.Product" fetch="select">
+            <column name="ProductIdId" />
+        </many-to-one>
+        <property name="comment" type="string">
+            <column name="Comment" />
+        </property>
+        <property name="commentTime" type="timestamp">
+            <column name="CommentTime" length="23" />
+        </property>
+        <property name="star" type="java.lang.Integer">
+            <column name="Star" />
+        </property>
+    </class>
+</hibernate-mapping>

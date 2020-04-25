@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2020 9:18:45 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.ProductInvoice" table="ProductInvoice" schema="dbo" catalog="QuanLiBanMayTinh" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="invoice" class="model.Invoice" fetch="select">
+            <column name="InvoiceId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="product" class="model.Product" fetch="select">
+            <column name="ProductId" not-null="true" />
+        </many-to-one>
+        <property name="number" type="int">
+            <column name="Number" not-null="true" />
+        </property>
+        <property name="totalPrice" type="java.lang.Integer">
+            <column name="TotalPrice" />
+        </property>
+        <property name="totalRating" type="java.lang.Float">
+            <column name="TotalRating" precision="24" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

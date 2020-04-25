@@ -12,6 +12,7 @@
         <ui:composition>
             <h:form>  
                 <p:growl id="messages"/>
+
                 <p:menubar>
                     <p:submenu label="File" icon="pi pi-file">
                         <p:submenu label="New" icon="pi pi-briefcase">
@@ -40,11 +41,11 @@
 
                     <p:submenu label="Actions" icon="pi pi-cog">
                         <p:submenu label="Ajax" icon="pi pi-refresh">
-                            <p:menuitem value="Save"  icon="pi pi-save" update="messages"/>
-                            <p:menuitem value="Update"  icon="pi pi-refresh" update="messages"/>
+                            <p:menuitem value="Save" action="#{menuView.save}" icon="pi pi-save" update="messages"/>
+                            <p:menuitem value="Update" action="#{menuView.update}" icon="pi pi-refresh" update="messages"/>
                         </p:submenu>
                         <p:submenu label="Non-Ajax" icon="pi pi-clone">
-                            <p:menuitem value="Delete"  icon="pi pi-times" update="messages" ajax="false"/>
+                            <p:menuitem value="Delete" action="#{menuView.delete}" icon="pi pi-times" update="messages" ajax="false"/>
                         </p:submenu>
                     </p:submenu>
 

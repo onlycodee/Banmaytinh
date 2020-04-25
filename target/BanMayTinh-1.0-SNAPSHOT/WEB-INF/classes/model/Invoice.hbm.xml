@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2020 9:18:45 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Invoice" table="Invoice" schema="dbo" catalog="QuanLiBanMayTinh" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="client" class="model.Client" fetch="select">
+            <column name="ClientId" />
+        </many-to-one>
+        <many-to-one name="paymentType" class="model.PaymentType" fetch="select">
+            <column name="PaymentTypeId" />
+        </many-to-one>
+        <property name="proposedDate" type="timestamp">
+            <column name="ProposedDate" length="23" />
+        </property>
+        <property name="totalPrice" type="int">
+            <column name="TotalPrice" not-null="true" />
+        </property>
+        <property name="discount" type="java.lang.Integer">
+            <column name="Discount" />
+        </property>
+        <property name="tatalPriceAfterDiscounting" type="java.lang.Integer">
+            <column name="TatalPriceAfterDiscounting" />
+        </property>
+        <property name="note" type="string">
+            <column name="Note" />
+        </property>
+        <property name="address" type="string">
+            <column name="Address" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="PhoneNumber" length="20" />
+        </property>
+        <property name="status" type="serializable">
+            <column name="Status" />
+        </property>
+        <set name="productInvoices" table="ProductInvoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="InvoiceId" not-null="true" />
+            </key>
+            <one-to-many class="model.ProductInvoice" />
+        </set>
+    </class>
+</hibernate-mapping>
