@@ -10,7 +10,7 @@
     </h:head>
     <h:body>
         <ui:composition>
-            <h:form>  
+<!--            <h:form>  
                 <p:growl id="messages"/>
 
                 <p:menubar>
@@ -56,22 +56,29 @@
                         <p:commandButton type="button" value="Logout" icon="pi pi-home" />
                     </f:facet>
                 </p:menubar>
-            </h:form>
-            <p:carousel value="#{productController.products}" headerText="Responsive" var="pr" itemStyle="text-align:center" responsive="true">
+            </h:form>-->
+            <p:carousel value="#{productController.products}" headerText="Responsive" var="pr" itemStyle="text-align:center" responsive="false">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-                    <!--<p:graphicImage name="demo/images/godfather/godfather1.jpg" />-->
-                    <h:outputText value="Ten:" />
+                    <f:facet name="header">
+                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+                    </f:facet>
+
+                    <h:outputText value="Id:" />
+                    <h:outputText value="#{pr.id}" />
+
+                    <h:outputText value="Year" />
                     <h:outputText value="#{pr.name}" />
 
-                    <h:outputText value="Gia" />
-                    <h:outputText value="#{pr.price}" />
+                    <h:outputText value="Color:" />
+                    <h:outputText value="#{pr.detail}" />
 
-                    <h:outputText value="Thong so:" />
-                    <h:outputText value="#{pr.detail}" style="color:#{car.color}"/>
-
-                    <h:outputText value="Trang thai" />
-                    <h:outputText value="$#{pr.status}" />
+                    <h:outputText value="Price" />
+                    <h:outputText value="$#{pr.price}" />
                 </p:panelGrid>
+
+                <f:facet name="footer">
+                        In total there are 9 cars.
+                </f:facet>
             </p:carousel>
         </ui:composition>
     </h:body>

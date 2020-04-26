@@ -7,34 +7,61 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
     </h:head>
     <h:body>
         <ui:composition template="Template/DefaultTemplate.xhtml">
             <ui:define name="content">
                 <h:form id="form">
-                    <p:dataGrid var="pr" value="#{productController.products}" columns="2" layout="grid"
-                        rows="1" paginator="true" id="cars"
+                    <p:dataGrid var="pr" value="#{productController.products}" columns="3" layout="grid"
+                        rows="5" paginator="true" id="cars"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                        rowsPerPageTemplate="6,12,16">
+                        rowsPerPageTemplate="5, 10, 15">
 
                         <f:facet name="header">
-                            Cars for Sale
+                            Computer for Sale
                         </f:facet>
 
                         <p:panel header="#{pr.id}" style="text-align:center">
                             <h:panelGrid columns="1" style="width:100%">
                                 <!--<p:graphicImage name="demo/images/car/#{car}.gif"/>--> 
 
-                                <h:outputText value="#{pr.name}" />
+                                <h:outputText value="#{pr.detail}" />
 
-<!--                                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-                                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
-                                    <f:setPropertyActionListener value="#{pr}" target="#{dataGridView.selectedCar}" />
-                                </p:commandLink>-->
+                                <p:commandLink update=":form:computerDetail" oncomplete="PF('computerDialog').show()" title="View Detail">
+                                    <!--<h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>-->
+                                    <h:outputText value="Detail"></h:outputText>
+                                    <f:setPropertyActionListener value="#{pr}" target="#{productDataGridView.selectedProduct}" />
+                                </p:commandLink>
                             </h:panelGrid>
                         </p:panel>
 
                     </p:dataGrid>
+                    <p:dialog header="Computer Info" widgetVar="computerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                        <p:outputPanel id="computerDetail" style="text-align:center;">
+                            <p:panelGrid  columns="2" rendered="#{not empty productDataGridView.selectedProduct}" columnClasses="label,value">
+                                <f:facet name="header">
+                                    <!--<p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/>--> 
+                                    <h:outputText value="Detail" />
+                                </f:facet>
+
+                                <h:outputText value="Id:" />
+                                <h:outputText value="#{productDataGridView.selectedProduct.id}" />
+
+                                <h:outputText value="Year" />
+                                <h:outputText value="#{productDataGridView.selectedProduct.name}" />
+
+                                <h:outputText value="Color:" />
+                                <h:outputText value="#{productDataGridView.selectedProduct.detail}" />
+
+                                <h:outputText value="Price" />
+                                <h:outputText value="$#{productDataGridView.selectedProduct.price}" />
+                                
+                                <h:outputText value="Chi tiet" />
+                                <h:commandButton action="#" value="Detail" />
+                            </p:panelGrid>
+                        </p:outputPanel>
+                    </p:dialog>
                 </h:form>
             </ui:define>
         </ui:composition>
