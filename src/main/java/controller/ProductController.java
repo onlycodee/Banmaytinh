@@ -40,7 +40,6 @@ public class ProductController {
         if (products == null) {
             products = ProductDAO.getInstance().findAll();
         } else if (parameterOne != null) {
-            System.out.println("Category id : " + parameterOne);
             products = ProductDAO.getInstance().getAllProductWithCategory(parameterOne);
         }
 //        System.out.println("Lengthh: " + products.size());

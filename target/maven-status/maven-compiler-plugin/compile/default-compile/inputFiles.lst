@@ -3,8 +3,12 @@ M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\model\PaymentType.java
 M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\uibean\ProductDataGridView.java
 M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\model\Invoice.java
 M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\model\Product.java
+M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\controller\CartController.java
+M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\dao\ProductCategoryDAO.java
+M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\viewmodel\CartItem.java
 M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\controller\ProductController.java
 M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\model\Client.java
+M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\uibean\ProductCategoryMenu.java
 M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\dao\AbstractModel.java
 M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\model\ProductInvoice.java
 M:\Hoc ki 2 nam 4\Netbean App\BanMayTinh\src\main\java\dao\HibernateUtil.java

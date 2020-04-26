@@ -22,11 +22,6 @@ public class ProductDAO extends AbstractModel {
         try {
             if (!sessionFactory.getCurrentSession().getTransaction().isActive())
                 sessionFactory.getCurrentSession().getTransaction().begin();    
-            System.out.println("Inside: " + categoryId);
-//            Query query = sessionFactory.getCurrentSession()
-//                    .createQuery("from Product pr where pr.ProductCategoryId = :categoryId");
-//            query.setParameter("categoryId", categoryId);
-//            return query.list();
             return sessionFactory.getCurrentSession()
                     .createQuery("from Product pr where pr.productCategory.id =" + categoryId).list();
         } catch (RuntimeException re) {

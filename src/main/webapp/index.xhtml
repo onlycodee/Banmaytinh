@@ -58,7 +58,8 @@
                                 <h:outputText value="$#{productDataGridView.selectedProduct.price}" />
                                 
                                 <h:outputText value="Chi tiet" />
-                                <h:commandButton action="#" value="Detail" />
+                                <!--<h:commandButton action="#{cartController.addItem(productDataGridView.selectedProduct)}" value="Add to cart" />-->
+                                <h:button outcome="#{cartController.addItem(productDataGridView.selectedProduct)}" value="Add to cart" />
                             </p:panelGrid>
                         </p:outputPanel>
                     </p:dialog>
