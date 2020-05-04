@@ -10,6 +10,7 @@ import dao.ProductDAO;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -30,6 +31,21 @@ public class ProductController {
      * Creates a new instance of ProductController
      */
     private List<Product> products = null;
+    private Product currentProduct = null;
+    
+    public String viewDetail(Product product) {
+        this.currentProduct = product;
+        System.out.println("path: " + product.getImagePath());
+        return "/Home/productDetail.xhtml?face-redirect=true";
+    }
+    
+    public void setCurrentProduct(Product currentProduct) {
+        this.currentProduct = currentProduct;
+    }
+
+    public Product getCurrentProduct() {
+        return currentProduct;
+    }
     
     public ProductController() {
     }
@@ -47,5 +63,14 @@ public class ProductController {
     }
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+    
+    public String[] productDetailList() {
+        if (this.currentProduct != null) {
+            String[] result = this.currentProduct.getDetail().split(Pattern.quote("."));
+            return result;
+        } else {
+            return null;
+        }
     }
 }
